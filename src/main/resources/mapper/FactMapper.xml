@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.toz.law.mapper.FactMapper">
+
+
+
+    <insert id="addFact" parameterType="FactPO" keyColumn="id" useGeneratedKeys="true">
+        insert into fact_(
+            fact,
+            relevant_ids,
+            punish_of_money,
+            criminals,
+            death_penalty,
+            imprisonment,
+            life_imprisonment
+        )values (
+        #{fact},
+        #{relevantIds},
+        #{punishOfMoney},
+        #{criminals},
+        #{deathPenalty},
+        #{imprisonment},
+        #{lifeImprisonment}
+        )
+    </insert>
+
+    <select id="findAccurationById" parameterType="Integer" resultType="Integer">
+        select id from accuration_ where id = #{id}
+    </select>
+
+    <insert id="addAccuration" parameterType="Accuration">
+        insert into accuration_(id,accuration) values
+        (#{id},#{accuration})
+    </insert>
+</mapper>
